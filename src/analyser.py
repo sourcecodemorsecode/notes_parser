@@ -1,7 +1,7 @@
 """This file processes a string to check for and process tokens."""
 
 import pathlib
-import tokens
+from src import tokens
 
 # priority:
 # 1 - Header
