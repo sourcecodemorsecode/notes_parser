@@ -16,14 +16,13 @@ from src import tokens
 class SermonAnalyser:
     """A class for lexical analysis of sermon notes."""
 
-
     def __init__(self, file_dir: str) -> None:
         """
         Set up the class and reads the specified file.
-        
+
         Args:
             file_dir: a path to the file to be read/adapted
-            
+
         Returns:
             None
 
@@ -48,7 +47,7 @@ class SermonAnalyser:
     def find_header(self) -> tokens.HeaderText:
         """
         Finds the header/title of the text.
-        
+
         title - the first non-blank line of text
         speaker - key start: "by", first subsequent non-black line of text
 
@@ -125,7 +124,7 @@ class SermonAnalyser:
     def get_comp_items(self, start: int) -> list[int]:
         """
         A method to collect the lines related to comparison.
-        
+
         Args:
             start: the line number to begin searching at
 

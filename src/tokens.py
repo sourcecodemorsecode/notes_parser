@@ -24,7 +24,7 @@ class HeaderText(GenericText):
     def __init__(self, title: str, speaker: str) -> None:
         """
         Instance set up.
-        
+
         Args:
             title: the title of the sermon
             speaker: who the sermon is by
@@ -48,10 +48,10 @@ class ContentText(GenericText):
     def __init__(self, txt: str) -> None:
         """
         Instance set up.
-        
+
         Args:
             txt: general text to display
-            
+
         Returns:
             None
         """
@@ -70,7 +70,7 @@ class BulletList(GenericText):
     def __init__(self, txt: str, parent: BulletList | None = None) -> None:
         """
         Instance set up.
-        
+
         Args:
             txt: the text in the bullet list item
             parent: the parent list item
@@ -90,7 +90,7 @@ class NumberList(GenericText):
     def __init__(self, txt: str, parent: BulletList | None = None):
         """
         Instance set up.
-        
+
         Args:
             txt: the text in the bullet list item
             parent: the parent list item
@@ -114,7 +114,7 @@ class QuotedText(GenericText):
         Args:
             quote: the quoted text
             author: a string of who who said the quote
-        
+
         Returns:
             None
         """
@@ -129,7 +129,7 @@ class BibleQuote:
     def __init__(self, verse: str, version: str|None = None):
         """
         Instance set up.
-        
+
         Args:
             verse: the book, chapter and verse of the quote
             version: the translation quoted from
@@ -148,7 +148,7 @@ class SideBySideComparison:
     def __init__(self, left_heading: str, right_heading: str) -> None:
         """
         Instance set up.
-        
+
         Args:
             left_heading: the heading of the left column
             right_heading: the heading of the right column
@@ -178,7 +178,7 @@ class SideBySideComparison:
     def add_comp_pair(self, left_side: str, right_side: str):
         """
         Adds an item to each side of the comparison.
-        
+
         Args:
             left_side: the text going on the left side of the comparison
             right_side: the text going on the right side of the comparison
