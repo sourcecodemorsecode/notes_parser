@@ -1,0 +1,22 @@
+Title goes here
+
+by Me
+
+note 1
+note 2
+
+note 3
+note 4
+
+
+
+note 5
+note 6
+
+::thing 1//thing 2
+:thing 3//thing 4
+:thing 5//thing 6
+
+::thing a//thing b
+:thing c//thing d
+:thing e//thing f
