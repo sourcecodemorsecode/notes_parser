@@ -3,7 +3,7 @@ name: Linting
 on: [push]
 
 jobs:
-  build-pycodestyle:
+  build-pycodestyle-src:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
@@ -18,10 +18,24 @@ jobs:
         pip install pycodestyle
     - name: Analysing the source code with pycodestyle
       run: python -m pycodestyle src
+
+  build-pycodestyle-tests:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python v3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pycodestyle
     - name: Analysing the test code with pycodestyle
       run: python -m pycodestyle tests
 
-  build-pylint:
+  build-pylint-src:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
@@ -37,5 +51,20 @@ jobs:
         pip install pycodestyle
     - name: Analysing the source code with pylint
       run: python -m pylint src
+
+  build-pylint-tests:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python v3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+        pip install pycodestyle
     - name: Analysing the test code with pylint
       run: python -m pylint tests
