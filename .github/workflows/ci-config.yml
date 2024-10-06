@@ -18,10 +18,10 @@ jobs:
         pip install pycodestyle
     - name: Analysing the code with pylint
       run: |
-        pylint src
-        pylint tests
+        python -m pylint tests
+        python -m pylint src
     - name: Analysing the code with pycodestyle
       run: |
-        pycodestyle src
-        pycodestyle tests
+        python -m pycodestyle src
+        python -m pycodestyle tests
   # test: comes next

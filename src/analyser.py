@@ -31,15 +31,16 @@ class SermonAnalyser:
             FileNotFoundError: when the given file directory is not valid
 
         """
-        
+
         self.file = pathlib.Path(file_dir)
 
         if not self.file.is_file():
             raise FileNotFoundError(f"Could not find {str(self.file)}")
-        elif self.file.suffix != ".txt":
+        
+        if self.file.suffix != ".txt":
             raise TypeError(f"Expected a .txt file but got "
                             f"a {self.file.suffix} file.")
-        
+
         with open(self.file, mode='r', encoding='utf-8') as f:
             # read lines into a list and remove new line characters
             self.lines = [ln.replace('\n', '') for ln in f.readlines()]
@@ -77,15 +78,16 @@ class SermonAnalyser:
                     speaker = self.lines[0]
                     self.lines.pop(0)
                     break
-                else:
-                    speaker = "(no speaker)"
-                    break
-            
+                
+                speaker = "(no speaker)"
+                break
+
             self.lines.pop(0)
 
         # confirm both have been found
         if title == "" or speaker == "":
-            raise Exception(f"Could not find header in {len(self.lines)} lines.")
+            raise ValueError("Could not find header in "
+                             f"{len(self.lines)} lines.")
 
         return tokens.HeaderText(title, speaker)
 
@@ -105,17 +107,17 @@ class SermonAnalyser:
                 a list of objects containing each comparison group
         """
 
-        comps = []
+        compars = []
         # search through all lines for heading matches
         for i, ln in enumerate(self.lines):
             if ln[:2] == "::":
                 # once a heading is found, gather all related items
                 items = self.get_comp_items(i + 1)
-                comps.append([i] + items)
+                compars.append([i] + items)
 
         # create comparison objects
         comp_objs = []
-        for group in comps:
+        for group in compars:
             comp_objs.append(self.make_comp_obj(group))
 
         return comp_objs
@@ -144,9 +146,9 @@ class SermonAnalyser:
             else:
                 break
             i += 1
-        
+
         return items
-    
+
     def make_comp_obj(self, comp_lines: list[int]
                       ) -> tokens.SideBySideComparison:
         """
@@ -179,7 +181,7 @@ if __name__ == "__main__":
 
     analyser = SermonAnalyser(path)
     print(analyser.find_header())
-    analyser = SermonAnalyser(path) 
+    analyser = SermonAnalyser(path)
     comps = analyser.find_comparison()
     for c in comps:
         print(c)
