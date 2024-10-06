@@ -36,7 +36,7 @@ class SermonAnalyser:
 
         if not self.file.is_file():
             raise FileNotFoundError(f"Could not find {str(self.file)}")
-        
+
         if self.file.suffix != ".txt":
             raise TypeError(f"Expected a .txt file but got "
                             f"a {self.file.suffix} file.")
@@ -68,7 +68,7 @@ class SermonAnalyser:
                 title = self.lines[0]
                 self.lines.pop(0)
                 break
-            
+
             self.lines.pop(0)
 
         # find speaker
@@ -78,7 +78,7 @@ class SermonAnalyser:
                     speaker = self.lines[0]
                     self.lines.pop(0)
                     break
-                
+
                 speaker = "(no speaker)"
                 break
 
