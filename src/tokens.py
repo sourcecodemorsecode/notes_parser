@@ -126,7 +126,7 @@ class QuotedText(GenericText):
 class BibleQuote:
     """A class for Bible quotes."""
 
-    def __init__(self, verse: str, version: str|None = None):
+    def __init__(self, verse: str, version: str | None = None):
         """
         Instance set up.
 
