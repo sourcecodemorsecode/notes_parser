@@ -17,12 +17,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pylint
         pip install pycodestyle
-    - name: Analysing the code with pylint
-      run: |
-        python -m pylint tests
-        python -m pylint src
-    - name: Analysing the code with pycodestyle
-      run: |
-        python -m pycodestyle src
-        python -m pycodestyle tests
-  # test: comes next
+    - name: Analysing the source code with pylint
+      run: python -m pylint src
+    - name: Analysing the test code with pylint
+      run: python -m pylint tests
